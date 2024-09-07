@@ -31,9 +31,52 @@ let isLoggedInBool = Boolean(isLoggedIn);
 
 let randomString = undefined;
 
-console.log(typeof randomString);
+// console.log(typeof randomString);
 
 let randomStringInTypeString = String(randomString);
 
-console.log(typeof randomStringInTypeString);
-console.log(randomStringInTypeString);
+// console.log(typeof randomStringInTypeString);
+// console.log(randomStringInTypeString);
+
+
+
+
+////////////          Operations               ///////////////
+
+// Arithmetic Operations
+
+// console.log(2 + 2);
+// console.log(5 - 10);
+// console.log(2 * 2);
+// console.log(2 ** 3);
+// console.log(10 / 3);
+// console.log(10 % 3);
+
+let firstName = "Israfil";
+let lastName = " Mallick";
+
+let fullName = firstName + lastName;
+// console.log(fullName);
+
+
+// console.log("2" + "2");
+// console.log("2" + 2);
+// console.log(2 + "2");
+// console.log(1 + 2 + "2");
+// console.log("1" + 2 + 2);
+
+// console.log(+true); // 1
+// console.log(+false); // 0
+
+
+// Post increment and pre increment
+
+let x = 10;
+let y = x++; // incrementing x's values after assignment
+
+console.log(x, y); // 11 10
+
+let i = 10;
+let j = ++i; // incremeting x's values before assignment
+
+console.log(i, j);
