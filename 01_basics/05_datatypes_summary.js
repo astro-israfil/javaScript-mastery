@@ -14,6 +14,9 @@ let anotherId = Symbol('123');
 
 // console.log(id === anotherId);
 
+
+
+
 // Reference (Non primitive)
 
 // Array, Object, Function
@@ -29,4 +32,37 @@ const greeting = function () {
     console.log('Hello world');
 }
 
-console.log(typeof languages);
+// console.log(typeof languages);
+
+
+
+
+//___________________________________________________________________________________________________
+
+
+
+// Stack (Primitive) and Heap (Non-Primitive)
+
+let myValueOne = 10;
+let myValueTwo = myValueOne;
+
+// console.log(myValueTwo);
+
+myValueTwo = 20;
+
+// console.log("myValueOne", myValueOne);
+// console.log("myValueTwo", myValueTwo);
+
+const myObjOne = {
+    username: "Israfil",
+    age: 20,
+};
+
+const myObjTwo = myObjOne;
+
+console.log("myObjTwo", myObjTwo);
+
+myObjTwo.username = "alyssa";
+
+console.log("myObjTwo", myObjTwo);
+console.log("myObjOne", myObjOne);
