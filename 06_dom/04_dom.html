@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulating DOM</title>
+</head>
+<body style="background-color: #212121;color: #f3f3f3;">
+    <h1>Menipulating DOM</h1>
+
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+
+    <script>
+        // ADD Language in list
+        // function addLanguage(langName) {
+        //     const li = document.createElement("li");
+        //     li.innerHTML = `${langName}`;
+        //     document.querySelector(".language").appendChild(li);
+        // }
+        // addLanguage("Python");
+
+        function addLanguage(langName) {
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(langName));
+            document.querySelector('.language').appendChild(li);
+        }
+
+        addLanguage("Python");
+        addLanguage("Swift");
+        addLanguage("Ruby");
+        addLanguage("TypeScript");
+
+        // EDIT DOM ELEMENT
+        const secondListItem = document.querySelector("li:nth-child(2)");
+        console.log(secondListItem);
+        const newLiEl = document.createElement("li");
+        newLiEl.appendChild(document.createTextNode("Golang"));
+        secondListItem.replaceWith(newLiEl);
+
+        // Edit element
+        const firstListItem = document.querySelector('li:first-child');
+        firstListItem.outerHTML = "<li>TypeScript</li>";
+
+        // remove element
+        const lastListItem = document.querySelector('li:last-child');
+        document.querySelector(".language").removeChild(lastListItem);
+    </script>
+</body>
+</html>
