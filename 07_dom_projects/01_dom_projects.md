@@ -27,3 +27,39 @@ buttons.forEach(function (button) {
   });
 });
 ```
+
+## Project 2: BMI Calculator
+
+```javaScript
+const form = document.querySelector('form');
+const results = document.querySelector('#results');
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const height = parseFloat(document.querySelector('#height').value);
+  const weight = parseFloat(document.querySelector('#weight').value);
+
+  if (height <= 0 || isNaN(height)) {
+    results.appendChild(
+      document.createTextNode('You entered an invalid height.')
+    );
+    results.style.color = 'red';
+  } else if (weight <= 0 || isNaN(weight)) {
+    results.appendChild(
+      document.createTextNode('You entered an invalid weight.')
+    );
+    results.style.color = 'red';
+  } else {
+    const bmi = ((weight / height ** 2) * 10000).toFixed(2);
+    results.innerHTML = bmi;
+    if (weight < 18.6) {
+      results.innerHTML += `<div style="color: blue;">Under Weight</div>`;
+    } else if (weight >= 18.6 && weight <= 24.9) {
+      results.innerHTML += `<div style="color: green;">Normal Range</div>`;
+    } else {
+      results.innerHTML += `<div style="color: red;">Over Weight</div>`;
+    }
+  }
+});
+```
