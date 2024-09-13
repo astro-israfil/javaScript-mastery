@@ -63,3 +63,13 @@ form.addEventListener('submit', function (e) {
   }
 });
 ```
+
+## Project 3: Digital Clock
+```javaScript
+const clock = document.getElementById('clock');
+
+setInterval(function () {
+  const date = new Date();
+  clock.innerHTML = date.toLocaleTimeString();
+}, 1000);
+```
