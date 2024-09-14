@@ -120,7 +120,7 @@ function displayResult(msg) {
   scoreEl.innerHTML = score;
 }
 
-function compareUserGuess(userGuessNumber, randomNumber) {
+function compareUserGuess(userGuessNumber) {
   if (userGuessNumber < randomNumber) {
     previousGuess.push(userGuessNumber);
     remainingPlayTerm--;
@@ -139,19 +139,17 @@ function compareUserGuess(userGuessNumber, randomNumber) {
     previousGuess = [];
     remainingPlayTerm = 10;
     score += 10;
+    randomNumber = getRandomNumber();
     displayResult('EXACT');
-    playGame();
   }
 }
 
 function playGame() {
-  randomNumber = getRandomNumber();
   submitBtn.addEventListener('click', function (e) {
-    // remainingPlayTerm--;
     e.preventDefault();
     const userGuessNumber = getUserGuess();
     if (userGuessNumber) {
-      compareUserGuess(userGuessNumber, randomNumber);
+      compareUserGuess(userGuessNumber);
     }
   });
 }
@@ -159,9 +157,10 @@ function playGame() {
 function endGame() {
   let afterTime = 5000;
   let intervalId = setInterval(function () {
-    afterTime -= 1000;
     displayResult(`GameOver play again after", ${afterTime / 1000}s`);
+    afterTime -= 1000;
   }, 1000);
+
   submitBtn.disabled = true;
   userGuess.value = '';
   setTimeout(function () {
@@ -170,7 +169,6 @@ function endGame() {
     previousGuess = [];
     score = 0;
     displayResult('');
-    // playGame();
     if (intervalId) {
       clearInterval(intervalId);
       intervalId = null;
@@ -181,5 +179,4 @@ function endGame() {
 if (remainingPlayTerm > 0) {
   playGame();
 }
-
 ```
