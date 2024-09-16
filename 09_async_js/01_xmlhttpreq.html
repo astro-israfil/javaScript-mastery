@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <style>
+        .card {
+            display: flex;
+            max-width: 400px;
+            gap: 20px;
+            background-color: #444444;
+            color: cornflowerblue;
+        }
+        .card img {
+            width: 150px;
+            display: block;
+        }
+    </style>
+</head>
+<body style="background-color: #212121; color: aliceblue;">
+    <h1>XMLHttpRequest</h1>
+    <pre>
+        Value	State	Description
+        0	UNSENT	Client has been created. open() not called yet.
+        1	OPENED	open() has been called.
+        2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+        3	LOADING	Downloading; responseText holds partial data.
+        4	DONE	The operation is complete.
+    </pre>
+
+    <script>
+        const requestUrl = "https://api.github.com/users/astro-israfil";
+        const request = new XMLHttpRequest();
+        request.open("GET", requestUrl);
+        request.onreadystatechange = function () {
+            // console.log(this.readyState);
+            // console.log(this.responseText);
+            if (this.readyState === 4) {
+                const userData = JSON.parse(this.responseText);
+                console.log(userData);
+                displayFetchedUserCard(userData);
+            }
+        }
+        request.send();
+
+        function displayFetchedUserCard({avatar_url, followers, login}) {
+            if (avatar_url && followers>= 0 && login) {
+                const card = document.createElement('div');
+                card.setAttribute("class", "card");
+                card.innerHTML = `
+                    <div>
+                        <img src="${avatar_url}" alt="${login}">
+                    </div>
+                    <div>
+                        <h2>${login}</h2>
+                        <p>Followers: ${followers}</p>
+                    </div>
+                `;
+                console.log(card);
+                document.body.appendChild(card);
+            }
+        }
+    </script>
+</body>
+</html>
