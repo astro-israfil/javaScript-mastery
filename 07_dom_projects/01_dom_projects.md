@@ -180,3 +180,67 @@ if (remainingPlayTerm > 0) {
   playGame();
 }
 ```
+
+## Project 4: Key event displayer
+```javaScript
+const keyContainerEl = document.querySelector('.key');
+
+window.addEventListener(
+  'keydown',
+  function (event) {
+    keyContainerEl.innerHTML = `
+    <table>
+      <tr>
+        <th>Key</th>
+        <th>Key Code</th>
+        <th>Code</th>
+      </tr>
+      <tr>
+        <td>${event.key === ' ' ? 'space' : event.key}</td>
+        <td>${event.keyCode}</td>
+        <td>${event.code}</td>
+      </tr>
+    </table>
+  `;
+  },
+  false
+);
+```
+
+
+## Project 6: Random Background Color Changer
+```javaScript
+const startBtn = document.querySelector('#start');
+const stopBtn = document.querySelector('#stop');
+
+const generateRandomColor = function () {
+  const hex = '0123456789ABCDEF';
+  let colorCode = '#';
+  for (let i = 0; i < 6; i++) {
+    const randomIndex = Math.floor(Math.random() * hex.length);
+    colorCode += hex.charAt(randomIndex);
+  }
+
+  return colorCode;
+};
+
+let intervalId;
+
+const startChangingColor = function () {
+  if (!intervalId) {
+    intervalId = setInterval(changeColor, 1000);
+  }
+
+  function changeColor() {
+    document.body.style.backgroundColor = generateRandomColor();
+  }
+};
+
+const stopChangingColor = function () {
+  clearInterval(intervalId);
+  intervalId = null;
+};
+
+startBtn.addEventListener('click', startChangingColor, false);
+stopBtn.addEventListener('click', stopChangingColor, false);
+```
