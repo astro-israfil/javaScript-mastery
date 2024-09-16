@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML event</title>
+
+    <style>
+        body {
+            background-color: #212121;
+            color: aliceblue;
+        }
+        li img {
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML Events</h1>
+    <ul id="images">
+        <li>
+            <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=600" alt="coding" id="coding">
+        </li>
+        <li>
+            <img src="https://images.pexels.com/photos/257532/pexels-photo-257532.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cat" id="cat">
+        </li>
+        <li>
+            <img src="https://images.pexels.com/photos/73871/rocket-launch-rocket-take-off-nasa-73871.jpeg?auto=compress&cs=tinysrgb&w=600" alt="rocket" id="rocket">
+        </li>
+        <li>
+            <img src="https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&w=600" alt="hills" id="hills">
+        </li>
+        <li>
+            <img src="https://images.pexels.com/photos/33545/sunrise-phu-quoc-island-ocean.jpg?auto=compress&cs=tinysrgb&w=600" alt="boat" id="boat">
+        </li>
+        <li>
+            <a href="https://www.google.com/" id="google">Google.</a>
+        </li>
+    </ul>
+
+    <script>
+        // type, timestamp, defaultPrevented
+        // target, toElement, srcElement, currentTarget,
+        // clientX, clientY, screenX, screenY
+        // altkey, ctrlkey, shiftkey, keyCode
+
+        // document.getElementById("images").addEventListener("click", function (event) {
+        //     console.log("Images clicked");
+        // }, false);
+
+        // document.getElementById("cat").addEventListener("click", function (event) {
+        //     console.log("Cat clicked");
+        //     // console.log(event);
+        //     event.stopPropagation();
+        // }, false); // The theird parameter is false by default and event bubbling mode activated
+
+        // document.getElementById("google").addEventListener("click", function (event) {
+        //     console.log("Google clicked");
+        //     event.preventDefault();
+        //     console.log(event.defaultPrevented); // true
+        // }, false);
+
+        document.getElementById("images").addEventListener("click", function (e) {
+            // console.log(event.target.tagName);
+            if (event.target.tagName === "IMG") {
+                const li = event.target.parentNode;
+                li.appendChild(document.createTextNode(event.target.alt.toUpperCase() + " "));
+                li.removeChild(event.target);
+            }
+        }, false);
+    </script>
+</body>
+</html>
